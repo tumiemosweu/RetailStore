@@ -16,11 +16,11 @@ public class BillingDetails {
     @DecimalMin(message = "Minimum groceries bill amount should be P0.00 ", value = "0.00")
     private BigDecimal groceriesBillAmount;
 
-    @DecimalMin(message = "Minimum total bill amount should be P0.01 (1 thebe) ", value = "0.01")
+    @DecimalMin(message = "Minimum total bill amount should be $0.01", value = "0.01")
     @NotNull(message = "The bill amount is required.")
     private BigDecimal totalBillAmount;
 
-    @DecimalMin(message = "Minimum discounted bill amount should be P0.00 ", value = "0.00")
+    @DecimalMin(message = "Minimum discounted bill amount should be $0.00 ", value = "0.00")
     private BigDecimal discountedBill;
 
     public BillingDetails(BigDecimal totalBillAmount) {

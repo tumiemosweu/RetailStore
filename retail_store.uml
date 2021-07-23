@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/Users/imosweu/spring-src/RetailStore/src/main/java/com/example/retail_store</OriginalElement>
+  <nodes>
+    <node x="914.375" y="457.0">com.example.retail_store.services.ICustomerService</node>
+    <node x="513.375" y="479.0">com.example.retail_store.repositories.ICustomerRepository</node>
+    <node x="1107.1895161290322" y="88.0">com.example.retail_store.models.BillingDetails</node>
+    <node x="58.375" y="479.0">com.example.retail_store.repositories.ICustomerTypeRepository</node>
+    <node x="1046.4395161290322" y="640.0">com.example.retail_store.controllers.CustomerController</node>
+    <node x="413.18951612903226" y="652.5">com.example.retail_store.configs.CustomerConfig</node>
+    <node x="85.6895161290322" y="652.5">com.example.retail_store.configs.CustomerTypeConfig</node>
+    <node x="145.0322580645161" y="88.0">com.example.retail_store.models.CustomerType</node>
+    <node x="665.0322580645161" y="0.0">com.example.retail_store.models.Customer</node>
+    <node x="0.0" y="762.0">com.example.retail_store.RetailStoreApplication</node>
+    <node x="636.4395161290322" y="618.0">com.example.retail_store.services.CustomerService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.example.retail_store.configs.CustomerConfig" target="com.example.retail_store.models.Customer" relationship="CREATE">
+      <point x="0.0" y="-15.0" />
+      <point x="502.875" y="432.0" />
+      <point x="784.0322580645161" y="432.0" />
+      <point x="0.0" y="203.5" />
+    </edge>
+    <edge source="com.example.retail_store.repositories.ICustomerRepository" target="com.example.retail_store.models.Customer" relationship="DEPENDENCY">
+      <point x="0.0" y="-27.5" />
+      <point x="694.875" y="432.0" />
+      <point x="784.0322580645161" y="432.0" />
+      <point x="0.0" y="203.5" />
+    </edge>
+    <edge source="com.example.retail_store.configs.CustomerTypeConfig" target="com.example.retail_store.models.CustomerType" relationship="CREATE">
+      <point x="-54.0" y="-15.0" />
+      <point x="139.6895161290322" y="597.0" />
+      <point x="0.0" y="597.0" />
+      <point x="0.0" y="432.0" />
+      <point x="263.0322580645161" y="432.0" />
+      <point x="0.0" y="115.5" />
+    </edge>
+    <edge source="com.example.retail_store.controllers.CustomerController" target="com.example.retail_store.services.ICustomerService" relationship="TO_ONE">
+      <point x="-87.5" y="-27.5" />
+      <point x="1133.9395161290322" y="577.0" />
+      <point x="1206.875" y="577.0" />
+      <point x="97.5" y="49.5" />
+    </edge>
+    <edge source="com.example.retail_store.services.CustomerService" target="com.example.retail_store.repositories.ICustomerRepository" relationship="TO_ONE">
+      <point x="-32.5" y="-49.5" />
+      <point x="798.9395161290322" y="597.0" />
+      <point x="785.625" y="597.0" />
+      <point x="90.75" y="27.5" />
+    </edge>
+    <edge source="com.example.retail_store.services.CustomerService" target="com.example.retail_store.models.BillingDetails" relationship="DEPENDENCY">
+      <point x="162.5" y="-49.5" />
+      <point x="993.9395161290322" y="587.0" />
+      <point x="1314.875" y="587.0" />
+      <point x="1314.875" y="432.0" />
+      <point x="1261.1895161290322" y="432.0" />
+      <point x="0.0" y="115.5" />
+    </edge>
+    <edge source="com.example.retail_store.services.ICustomerService" target="com.example.retail_store.models.Customer" relationship="DEPENDENCY">
+      <point x="-97.5" y="-49.5" />
+      <point x="1011.875" y="432.0" />
+      <point x="784.0322580645161" y="432.0" />
+      <point x="0.0" y="203.5" />
+    </edge>
+    <edge source="com.example.retail_store.configs.CustomerTypeConfig" target="com.example.retail_store.repositories.ICustomerTypeRepository" relationship="DEPENDENCY">
+      <point x="54.0" y="-15.0" />
+      <point x="247.6895161290322" y="597.0" />
+      <point x="251.81451612903226" y="597.0" />
+      <point x="251.81451612903226" y="587.0" />
+      <point x="164.125" y="587.0" />
+      <point x="-105.75" y="27.5" />
+    </edge>
+    <edge source="com.example.retail_store.repositories.ICustomerTypeRepository" target="com.example.retail_store.models.CustomerType" relationship="DEPENDENCY">
+      <point x="0.0" y="-27.5" />
+      <point x="269.875" y="432.0" />
+      <point x="263.0322580645161" y="432.0" />
+      <point x="0.0" y="115.5" />
+    </edge>
+    <edge source="com.example.retail_store.services.CustomerService" target="com.example.retail_store.models.Customer" relationship="DEPENDENCY">
+      <point x="32.5" y="-49.5" />
+      <point x="863.9395161290322" y="597.0" />
+      <point x="886.875" y="597.0" />
+      <point x="886.875" y="432.0" />
+      <point x="784.0322580645161" y="432.0" />
+      <point x="0.0" y="203.5" />
+    </edge>
+    <edge source="com.example.retail_store.services.CustomerService" target="com.example.retail_store.repositories.ICustomerTypeRepository" relationship="TO_ONE">
+      <point x="-162.5" y="-49.5" />
+      <point x="668.9395161290322" y="587.0" />
+      <point x="375.625" y="587.0" />
+      <point x="105.75" y="27.5" />
+    </edge>
+    <edge source="com.example.retail_store.services.ICustomerService" target="com.example.retail_store.models.BillingDetails" relationship="DEPENDENCY">
+      <point x="97.5" y="-49.5" />
+      <point x="1206.875" y="432.0" />
+      <point x="1261.1895161290322" y="432.0" />
+      <point x="0.0" y="115.5" />
+    </edge>
+    <edge source="com.example.retail_store.services.CustomerService" target="com.example.retail_store.models.CustomerType" relationship="DEPENDENCY">
+      <point x="-97.5" y="-49.5" />
+      <point x="733.9395161290322" y="577.0" />
+      <point x="491.875" y="577.0" />
+      <point x="491.875" y="432.0" />
+      <point x="263.0322580645161" y="432.0" />
+      <point x="0.0" y="115.5" />
+    </edge>
+    <edge source="com.example.retail_store.configs.CustomerConfig" target="com.example.retail_store.repositories.ICustomerTypeRepository" relationship="DEPENDENCY">
+      <point x="-60.0" y="-15.0" />
+      <point x="443.18951612903226" y="597.0" />
+      <point x="251.81451612903226" y="597.0" />
+      <point x="251.81451612903226" y="587.0" />
+      <point x="164.125" y="587.0" />
+      <point x="-105.75" y="27.5" />
+    </edge>
+    <edge source="com.example.retail_store.services.CustomerService" target="com.example.retail_store.services.ICustomerService" relationship="REALIZATION">
+      <point x="97.5" y="-49.5" />
+      <point x="928.9395161290322" y="577.0" />
+      <point x="1011.875" y="577.0" />
+      <point x="-97.5" y="49.5" />
+    </edge>
+    <edge source="com.example.retail_store.configs.CustomerConfig" target="com.example.retail_store.repositories.ICustomerRepository" relationship="DEPENDENCY">
+      <point x="60.0" y="-15.0" />
+      <point x="563.1895161290322" y="597.0" />
+      <point x="604.125" y="597.0" />
+      <point x="-90.75" y="27.5" />
+    </edge>
+    <edge source="com.example.retail_store.controllers.CustomerController" target="com.example.retail_store.models.BillingDetails" relationship="DEPENDENCY">
+      <point x="87.49999999999994" y="-27.5" />
+      <point x="1308.9395161290322" y="597.0" />
+      <point x="1355.3024193548388" y="597.0" />
+      <point x="1355.3024193548388" y="432.0" />
+      <point x="1261.1895161290322" y="432.0" />
+      <point x="0.0" y="115.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7602136865630683" showDependencies="true" x="818.3509899278354" y="403.82555849614266" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+

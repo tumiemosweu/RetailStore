@@ -1,22 +1,19 @@
 package com.example.retail_store.configs;
 
 import com.example.retail_store.models.CustomerType;
-import com.example.retail_store.repositories.CustomerTypeRepository;
+import com.example.retail_store.repositories.ICustomerTypeRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
-
-import static java.time.Month.JANUARY;
 
 @Configuration
 public class CustomerTypeConfig {
 
     @Bean
-    CommandLineRunner employeeCommandLineRunner(CustomerTypeRepository repository){
+    CommandLineRunner employeeCommandLineRunner(ICustomerTypeRepository repository){
         return args -> {
             CustomerType employee = new CustomerType(
                     "employee",

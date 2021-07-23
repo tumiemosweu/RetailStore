@@ -31,7 +31,6 @@ public class Customer {
     @Transient
     private Integer yearsActive;
 
-
     public Customer(String firstName,
                     String lastName,
                     String email,

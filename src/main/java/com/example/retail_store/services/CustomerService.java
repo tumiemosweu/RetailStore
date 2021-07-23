@@ -34,8 +34,9 @@ public class CustomerService implements ICustomerService{
 
         Optional<Customer> customerOptional = customerRepository.findById(customerId);
 
-        var discountedBillAmount = billingDetails.getTotalBillAmount()
-                .subtract(billingDetails.getGroceriesBillAmount());
+        var totalBill = billingDetails.getTotalBillAmount();
+
+        var discountedBillAmount = totalBill.subtract(billingDetails.getGroceriesBillAmount());
 
         if(customerOptional.isPresent()){
             if (customerOptional.get().getYearsActive() >= 2){
@@ -47,14 +48,23 @@ public class CustomerService implements ICustomerService{
 
             }
         }
-        return discountedBillAmount.subtract(getOtherDiscount(discountedBillAmount));
+        return discountedBillAmount.subtract(getOtherDiscount(totalBill));
 
     }
 
     @Override
     public BigDecimal getOtherDiscount(BigDecimal billAmount){
 
-        var discountAmount = billAmount.setScale(0, RoundingMode.HALF_DOWN);
+        var billFloor = (float)(Math.floor(billAmount.floatValue()/100.0))*100;
+        var discountAmount = BigDecimal.valueOf(billFloor);
+
+//
+//                billAmount.setScale(0, RoundingMode.DOWN);
+//
+//        discountAmount = discountAmount.intValue();
+//
+//        discountAmount = (float)(Math.floor(discountAmount/discountAmount.floatValue()))*100;
+//
 
         if(billAmount.compareTo(BigDecimal.ZERO) != 0 ) {
 
@@ -74,7 +84,7 @@ public class CustomerService implements ICustomerService{
             return customerTypeOptional.get().getDiscount();
         }
 
-        return BigDecimal.valueOf(0);
+        return BigDecimal.valueOf(0.00).setScale(2, RoundingMode.HALF_EVEN);
     }
 
 }
