@@ -24,7 +24,7 @@ public class CustomerConfig {
                     "Mosweu",
                     "imosweuk@gmail.com",
                     LocalDate.of(2020, JANUARY, 1),
-                    customerTypeRepository.findCustomerTypeByName("employee").get()
+                    "employee"
             );
 
             Customer gako = new Customer(
@@ -32,7 +32,7 @@ public class CustomerConfig {
                     "Kamogelo",
                     "gakokam@gmail.com",
                     LocalDate.of(2017, JANUARY, 1),
-                    customerTypeRepository.findCustomerTypeByName("employee").get()
+                    "employee"
             );
             repository.saveAll(
                     List.of(tumie, gako)

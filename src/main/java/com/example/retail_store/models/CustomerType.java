@@ -24,9 +24,6 @@ public class CustomerType {
     private String name;
     private BigDecimal discount;
 
-    @OneToMany(mappedBy = "customerType")
-    private List<Customer> customers;
-
 
     public CustomerType(String name, BigDecimal discount) {
         this.name = name;

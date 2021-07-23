@@ -19,8 +19,13 @@ public class CustomerTypeConfig {
     CommandLineRunner employeeCommandLineRunner(CustomerTypeRepository repository){
         return args -> {
             CustomerType employee = new CustomerType(
-                    "Employee",
+                    "employee",
                     BigDecimal.valueOf(0.3)
+            );
+
+            CustomerType affiliate = new CustomerType(
+                    "affiliate",
+                    BigDecimal.valueOf(0.1)
             );
 
             repository.saveAll(

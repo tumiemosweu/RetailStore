@@ -26,9 +26,7 @@ public class Customer {
     private String lastName;
     private String email;
     private LocalDate joinDate;
-
-    @ManyToOne
-    private CustomerType customerType;
+    private String customerType;
 
     @Transient
     private Integer yearsActive;
@@ -38,7 +36,7 @@ public class Customer {
                     String lastName,
                     String email,
                     LocalDate joinDate,
-                    CustomerType customerType) {
+                    String customerType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

@@ -1,5 +1,6 @@
 package com.example.retail_store.services;
 
+import com.example.retail_store.models.BillingDetails;
 import com.example.retail_store.models.CustomerType;
 import com.example.retail_store.repositories.CustomerTypeRepository;
 import com.example.retail_store.models.Customer;
@@ -12,7 +13,7 @@ import java.math.RoundingMode;
 import java.util.Optional;
 
 @Service
-public class CustomerService {
+public class CustomerService implements ICustomerService{
 
     private final CustomerRepository customerRepository;
     private final CustomerTypeRepository customerTypeRepository;
@@ -25,28 +26,30 @@ public class CustomerService {
         this.customerTypeRepository = customerTypeRepository;
     }
 
-    public BigDecimal getDiscountedAmount(Long customerId, BigDecimal billAmount) {
+    @Override
+    public BigDecimal getDiscountedAmount(Long customerId, BillingDetails billingDetails) {
 
         Optional<Customer> customerOptional = customerRepository.findById(customerId);
 
-        var discountedBillAmount = billAmount;
+        var discountedBillAmount = billingDetails.getTotalBillAmount()
+                .subtract(billingDetails.getGroceriesBillAmount());
 
         if(customerOptional.isPresent()){
             if (customerOptional.get().getYearsActive() >= 2){
 
             }
             else{
-                discountedBillAmount = billAmount.multiply(getPercentageDiscount(
+                discountedBillAmount = discountedBillAmount.multiply(getPercentageDiscount(
                         customerOptional.get())).setScale(2, RoundingMode.HALF_EVEN);
 
             }
         }
-
-        return billAmount.subtract(getHundredDollarDiscount(discountedBillAmount));
+        return discountedBillAmount.subtract(getOtherDiscount(discountedBillAmount));
 
     }
 
-    private BigDecimal getHundredDollarDiscount(BigDecimal billAmount){
+    @Override
+    public BigDecimal getOtherDiscount(BigDecimal billAmount){
 
         var discountAmount = billAmount.setScale(0, RoundingMode.HALF_DOWN);
 
@@ -58,9 +61,17 @@ public class CustomerService {
         return discountAmount.setScale(2, RoundingMode.HALF_EVEN);
     }
 
-    private BigDecimal getPercentageDiscount(Customer customer){
+    @Override
+    public BigDecimal getPercentageDiscount(Customer customer){
 
-        return customer.getCustomerType().getDiscount();
+        Optional<CustomerType> customerTypeOptional = customerTypeRepository
+                .findCustomerTypeByName(customer.getCustomerType());
+
+        if(customerTypeOptional.isPresent()){
+            return customerTypeOptional.get().getDiscount();
+        }
+
+        return BigDecimal.valueOf(0);
     }
 
 }

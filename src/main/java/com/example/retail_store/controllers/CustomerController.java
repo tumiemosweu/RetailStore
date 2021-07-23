@@ -1,9 +1,11 @@
 package com.example.retail_store.controllers;
 
+import com.example.retail_store.models.BillingDetails;
 import com.example.retail_store.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 
 @RestController
@@ -18,12 +20,16 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping(path = "{customerId}")
-    public BigDecimal discountedBill(@PathVariable("customerId") Long customerId,
-                          @RequestParam(required = true) BigDecimal billAmount){
+    @PostMapping(value = "/retail-store/billing-discount/{customerId}", produces = "application/json")
+    @ResponseBody
+    public BillingDetails discountedBill(@Valid @RequestBody BillingDetails billingDetails,
+                                     @PathVariable("customerId") Long customerId){
 
-        BigDecimal discountedBillAmount = customerService.getDiscountedAmount(customerId, billAmount);
-        return discountedBillAmount;
+        BigDecimal discountedBillAmount = customerService
+                .getDiscountedAmount(customerId, billingDetails);
+
+        billingDetails.setDiscountedBill(discountedBillAmount);
+        return billingDetails;
     }
 
 }
