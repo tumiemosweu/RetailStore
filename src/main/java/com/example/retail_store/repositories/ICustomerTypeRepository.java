@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface CustomerTypeRepository
+public interface ICustomerTypeRepository
         extends JpaRepository<CustomerType, Long> {
 
     Optional<CustomerType> findCustomerTypeByName(String typeName);

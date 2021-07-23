@@ -2,12 +2,12 @@ package com.example.retail_store.services;
 
 import com.example.retail_store.models.BillingDetails;
 import com.example.retail_store.models.CustomerType;
-import com.example.retail_store.repositories.CustomerTypeRepository;
 import com.example.retail_store.models.Customer;
-import com.example.retail_store.repositories.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.retail_store.repositories.ICustomerRepository;
+import com.example.retail_store.repositories.ICustomerTypeRepository;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Optional;
@@ -15,16 +15,19 @@ import java.util.Optional;
 @Service
 public class CustomerService implements ICustomerService{
 
-    private final CustomerRepository customerRepository;
-    private final CustomerTypeRepository customerTypeRepository;
+    @Resource
+    ICustomerRepository customerRepository;
 
-    @Autowired
-    public CustomerService(CustomerRepository customerRepository,
-                           CustomerTypeRepository customerTypeRepository) {
+    @Resource
+    ICustomerTypeRepository customerTypeRepository;
 
-        this.customerRepository = customerRepository;
-        this.customerTypeRepository = customerTypeRepository;
-    }
+//    @Autowired
+//    public CustomerService(ICustomerRepository customerRepository,
+//                           ICustomerTypeRepository customerTypeRepository) {
+//
+//        this.customerRepository = customerRepository;
+//        this.customerTypeRepository = customerTypeRepository;
+//    }
 
     @Override
     public BigDecimal getDiscountedAmount(Long customerId, BillingDetails billingDetails) {

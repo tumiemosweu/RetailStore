@@ -44,6 +44,16 @@ public class Customer {
         this.customerType = customerType;
     }
 
+    public Customer(String firstName,
+                    String lastName,
+                    String email,
+                    LocalDate joinDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.joinDate = joinDate;
+    }
+
     public Integer getYearsActive() {
         return Period.between(getJoinDate(), LocalDate.now()).getYears();
     }

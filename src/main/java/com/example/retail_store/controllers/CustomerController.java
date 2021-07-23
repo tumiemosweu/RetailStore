@@ -2,9 +2,11 @@ package com.example.retail_store.controllers;
 
 import com.example.retail_store.models.BillingDetails;
 import com.example.retail_store.services.CustomerService;
+import com.example.retail_store.services.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.math.BigDecimal;
 
@@ -12,13 +14,8 @@ import java.math.BigDecimal;
 @RequestMapping(path="api/v1/customer")
 public class CustomerController {
 
-    private final CustomerService customerService;
-
-    @Autowired
-    public CustomerController(CustomerService customerService) {
-
-        this.customerService = customerService;
-    }
+    @Resource
+    ICustomerService customerService;
 
     @PostMapping(value = "/retail-store/billing-discount/{customerId}", produces = "application/json")
     @ResponseBody
