@@ -24,7 +24,9 @@ public class BillingDetails {
     private BigDecimal discountedBill;
 
     public BillingDetails(BigDecimal totalBillAmount) {
+
         this.totalBillAmount = totalBillAmount;
+        groceriesBillAmount = BigDecimal.ZERO;
     }
 
     public BillingDetails(BigDecimal groceriesBillAmount, BigDecimal totalBillAmount) {

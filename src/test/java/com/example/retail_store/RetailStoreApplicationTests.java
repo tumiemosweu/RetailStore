@@ -29,7 +29,7 @@ class RetailStoreApplicationTests {
 	void calculateDiscountForRegularCustomer() {
 		Customer customer = customerRepository.findCustomerByEmail("awhite@gmail.com").get();
 		var customerDiscount = customerService.getPercentageDiscount(customer);
-		assertThat(customerDiscount).isEqualTo(BigDecimal.valueOf(0));
+		assertThat(customerDiscount).isEqualTo(BigDecimal.valueOf(0).setScale(2, RoundingMode.HALF_EVEN));
 
 	}
 
@@ -38,7 +38,7 @@ class RetailStoreApplicationTests {
 		var billingDetails = new BillingDetails(BigDecimal.valueOf(1000));
 		Customer customer = customerRepository.findCustomerByEmail("awhite@gmail.com").get();
 		var finalBill = customerService.getDiscountedAmount(customer.getId(), billingDetails);
-		assertThat(finalBill).isEqualTo(BigDecimal.valueOf(900));
+		assertThat(finalBill).isEqualTo(BigDecimal.valueOf(950).setScale(2, RoundingMode.HALF_EVEN));
 
 	}
 

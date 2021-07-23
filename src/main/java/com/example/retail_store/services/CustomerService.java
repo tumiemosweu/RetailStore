@@ -21,14 +21,6 @@ public class CustomerService implements ICustomerService{
     @Resource
     ICustomerTypeRepository customerTypeRepository;
 
-//    @Autowired
-//    public CustomerService(ICustomerRepository customerRepository,
-//                           ICustomerTypeRepository customerTypeRepository) {
-//
-//        this.customerRepository = customerRepository;
-//        this.customerTypeRepository = customerTypeRepository;
-//    }
-
     @Override
     public BigDecimal getDiscountedAmount(Long customerId, BillingDetails billingDetails) {
 
@@ -57,14 +49,6 @@ public class CustomerService implements ICustomerService{
 
         var billFloor = (float)(Math.floor(billAmount.floatValue()/100.0))*100;
         var discountAmount = BigDecimal.valueOf(billFloor);
-
-//
-//                billAmount.setScale(0, RoundingMode.DOWN);
-//
-//        discountAmount = discountAmount.intValue();
-//
-//        discountAmount = (float)(Math.floor(discountAmount/discountAmount.floatValue()))*100;
-//
 
         if(billAmount.compareTo(BigDecimal.ZERO) != 0 ) {
 
