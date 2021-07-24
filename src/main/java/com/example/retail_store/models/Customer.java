@@ -54,6 +54,7 @@ public class Customer {
     }
 
     public Integer getYearsActive() {
+
         return Period.between(getJoinDate(), LocalDate.now()).getYears();
     }
 }

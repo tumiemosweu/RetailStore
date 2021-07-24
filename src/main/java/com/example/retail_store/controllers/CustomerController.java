@@ -10,15 +10,29 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.math.BigDecimal;
 
+/**
+ * A REST API controller that calculates customer discount based on the customer type and benefits
+ *
+ * @author  I.Mosweu
+ * @version 1.0
+ * @since   24/07/2021
+ */
+
+
 @RestController
-@RequestMapping(path="api/v1/customer")
+@RequestMapping(path="retail-store/v1")
 public class CustomerController {
 
     @Resource
     ICustomerService customerService;
 
-    @PostMapping(value = "/retail-store/billing-discount/{customerId}", produces = "application/json")
-    @ResponseBody
+    /**
+     * API action that receives billing information from front-end and calculates customer discount
+     * @param billingDetails request body
+     * @param customerId
+     * @return BillingDetails type response body
+     */
+    @GetMapping(value = "/billing-discount/{customerId}", produces = "application/json")
     public BillingDetails discountedBill(@Valid @RequestBody BillingDetails billingDetails,
                                      @PathVariable("customerId") Long customerId){
 
