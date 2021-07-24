@@ -19,7 +19,7 @@ cd RetailStore
 Run app with maven wrapper:
 
 ```
-mvn spring-boot:run
+./mvnw spring-boot:run
 ```
 
 Running tests:
