@@ -32,7 +32,7 @@ public class CustomerController {
      * @param customerId
      * @return BillingDetails type response body
      */
-    @GetMapping(value = "/billing-discount/{customerId}", produces = "application/json")
+    @PostMapping(value = "/billing-discount/{customerId}", produces = "application/json")
     public BillingDetails discountedBill(@Valid @RequestBody BillingDetails billingDetails,
                                      @PathVariable("customerId") Long customerId){
 
