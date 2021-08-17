@@ -3,18 +3,18 @@ package com.example.retail_store.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class BillingDetails {
 
     @DecimalMin(message = "Minimum groceries bill amount should be P0.00 ", value = "0.00")
-    private BigDecimal groceriesBillAmount;
+    private BigDecimal groceriesBillAmount = BigDecimal.ZERO;;
 
     @DecimalMin(message = "Minimum total bill amount should be $0.01", value = "0.01")
     @NotNull(message = "The bill amount is required.")
@@ -26,11 +26,15 @@ public class BillingDetails {
     public BillingDetails(BigDecimal totalBillAmount) {
 
         this.totalBillAmount = totalBillAmount;
-        groceriesBillAmount = BigDecimal.ZERO;
     }
 
     public BillingDetails(BigDecimal groceriesBillAmount, BigDecimal totalBillAmount) {
         this.groceriesBillAmount = groceriesBillAmount;
-        this.totalBillAmount = totalBillAmount;
+
+        if(groceriesBillAmount != null)
+            this.totalBillAmount = totalBillAmount;
+
     }
+
+//    public BigDecimal get
 }

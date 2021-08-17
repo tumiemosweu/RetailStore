@@ -4,6 +4,7 @@ import com.example.retail_store.models.BillingDetails;
 import com.example.retail_store.services.CustomerService;
 import com.example.retail_store.services.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -32,7 +33,7 @@ public class CustomerController {
      * @param customerId
      * @return BillingDetails type response body
      */
-    @PostMapping(value = "/billing-discount/{customerId}", produces = "application/json")
+    @PostMapping(value = "/billing-discount/{customerId}/", produces = MediaType.APPLICATION_JSON_VALUE)
     public BillingDetails discountedBill(@Valid @RequestBody BillingDetails billingDetails,
                                      @PathVariable("customerId") Long customerId){
 

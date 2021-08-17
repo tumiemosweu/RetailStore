@@ -31,14 +31,14 @@ public class CustomerService implements ICustomerService{
         var discountedBillAmount = totalBill.subtract(billingDetails.getGroceriesBillAmount());
 
         if(customerOptional.isPresent()){
-            if (customerOptional.get().getYearsActive() >= 2){
+//            if (customerOptional.get().getYearsActive() >= 2){
+//
+//            }
+//            else{
+            discountedBillAmount = discountedBillAmount.multiply(getPercentageDiscount(
+                    customerOptional.get())).setScale(2, RoundingMode.HALF_EVEN);
 
-            }
-            else{
-                discountedBillAmount = discountedBillAmount.multiply(getPercentageDiscount(
-                        customerOptional.get())).setScale(2, RoundingMode.HALF_EVEN);
-
-            }
+//            }
         }
         return discountedBillAmount.subtract(getOtherDiscount(totalBill));
 
