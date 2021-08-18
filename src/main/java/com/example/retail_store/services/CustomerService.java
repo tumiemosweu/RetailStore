@@ -28,19 +28,23 @@ public class CustomerService implements ICustomerService{
 
         var totalBill = billingDetails.getTotalBillAmount();
 
-        var discountedBillAmount = totalBill.subtract(billingDetails.getGroceriesBillAmount());
+        var discountableBillAmount = totalBill.subtract(billingDetails.getGroceriesBillAmount());
+
+        var discountAmount = BigDecimal.ZERO;
 
         if(customerOptional.isPresent()){
 //            if (customerOptional.get().getYearsActive() >= 2){
 //
 //            }
 //            else{
-            discountedBillAmount = discountedBillAmount.multiply(getPercentageDiscount(
-                    customerOptional.get())).setScale(2, RoundingMode.HALF_EVEN);
+            var percentageDiscount = getPercentageDiscount(customerOptional.get());
+            discountAmount = discountableBillAmount.multiply(percentageDiscount).setScale(2, RoundingMode.HALF_EVEN);
 
 //            }
         }
-        return discountedBillAmount.subtract(getOtherDiscount(totalBill));
+        var otherDiscount = getOtherDiscount(totalBill);
+        var discountedBillAmount = discountableBillAmount.subtract(discountAmount);
+        return discountedBillAmount.subtract(otherDiscount);
 
     }
 

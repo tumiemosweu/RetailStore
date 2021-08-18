@@ -35,6 +35,4 @@ public class BillingDetails {
             this.totalBillAmount = totalBillAmount;
 
     }
-
-//    public BigDecimal get
 }
