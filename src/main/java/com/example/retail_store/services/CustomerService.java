@@ -16,10 +16,10 @@ import java.util.Optional;
 public class CustomerService implements ICustomerService{
 
     @Resource
-    ICustomerRepository customerRepository;
+    private ICustomerRepository customerRepository;
 
     @Resource
-    ICustomerTypeRepository customerTypeRepository;
+    private ICustomerTypeRepository customerTypeRepository;
 
     @Override
     public BigDecimal getDiscountedAmount(Long customerId, BillingDetails billingDetails) {

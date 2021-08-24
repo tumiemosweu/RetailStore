@@ -25,7 +25,7 @@ import java.math.BigDecimal;
 public class CustomerController {
 
     @Resource
-    ICustomerService customerService;
+    private ICustomerService customerService;
 
     /**
      * API action that receives billing information from front-end and calculates customer discount
