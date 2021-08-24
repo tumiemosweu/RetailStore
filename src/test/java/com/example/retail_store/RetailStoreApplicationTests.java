@@ -115,4 +115,12 @@ class RetailStoreApplicationTests {
 		assertThat(discountedBill).isEqualTo(BigDecimal.valueOf(45.0).setScale(2));
 	}
 
+	@Test
+	void calculateDiscountedBillForEmployeeCustomerWithGroceries(){
+		var billingDetails = new BillingDetails(BigDecimal.valueOf(300), BigDecimal.valueOf(1300));
+		Customer customer = customerRepository.findCustomerByEmail("jadoe@gmail.com").get();
+		var finalBill = customerService.getDiscountedAmount(customer.getId(), billingDetails);
+		assertThat(finalBill).isEqualTo(BigDecimal.valueOf(635).setScale(2));
+	}
+
 }

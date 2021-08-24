@@ -16,8 +16,7 @@ import static java.time.Month.JANUARY;
 public class CustomerConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(ICustomerRepository repository,
-                                        ICustomerTypeRepository customerTypeRepository){
+    CommandLineRunner commandLineRunner(ICustomerRepository repository){
         return args -> {
             Customer aone = new Customer(
                     "Aone",
