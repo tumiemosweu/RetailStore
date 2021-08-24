@@ -26,23 +26,30 @@ public class CustomerConfig {
                     LocalDate.of(2017, JANUARY, 1)
             );
 
-            Customer tumie = new Customer(
-                    "Tumie",
-                    "Mosweu",
-                    "imosweu@gmail.com",
+            Customer jane = new Customer(
+                    "Jane",
+                    "Doe",
+                    "jadoe@gmail.com",
                     LocalDate.of(2020, JANUARY, 1),
                     "employee"
             );
 
-            Customer gako = new Customer(
-                    "Gako",
-                    "Kamogelo",
-                    "gakokam@gmail.com",
+            Customer john = new Customer(
+                    "John",
+                    "Doe",
+                    "jodoe@gmail.com",
                     LocalDate.of(2017, JANUARY, 1),
-                    "employee"
+                    "affiliate"
+            );
+
+            Customer tom = new Customer(
+                    "Tom",
+                    "Alias",
+                    "talias@gmail.com",
+                    LocalDate.of(2020, JANUARY, 1)
             );
             repository.saveAll(
-                    List.of(aone, tumie, gako)
+                    List.of(aone, jane, john, tom)
             );
         };
     }

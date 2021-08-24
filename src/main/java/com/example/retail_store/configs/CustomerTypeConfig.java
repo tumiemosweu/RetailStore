@@ -26,7 +26,7 @@ public class CustomerTypeConfig {
             );
 
             repository.saveAll(
-                    List.of(employee)
+                    List.of(employee, affiliate)
             );
         };
     }

@@ -32,16 +32,9 @@ public class CustomerService implements ICustomerService{
 
         var discountAmount = BigDecimal.ZERO;
 
-        if(customerOptional.isPresent()){
-//            if (customerOptional.get().getYearsActive() >= 2){
-//
-//            }
-//            else{
-            var percentageDiscount = getPercentageDiscount(customerOptional.get());
+        var percentageDiscount = getPercentageDiscount(customerOptional.get());
             discountAmount = discountableBillAmount.multiply(percentageDiscount).setScale(2, RoundingMode.HALF_EVEN);
 
-//            }
-        }
         var otherDiscount = getOtherDiscount(totalBill);
         var discountedBillAmount = discountableBillAmount.subtract(discountAmount);
         return discountedBillAmount.subtract(otherDiscount);
@@ -68,9 +61,15 @@ public class CustomerService implements ICustomerService{
         Optional<CustomerType> customerTypeOptional = customerTypeRepository
                 .findCustomerTypeByName(customer.getCustomerType());
 
-        if(customerTypeOptional.isPresent()){
+        if(customerTypeOptional.isPresent())
             return customerTypeOptional.get().getDiscount();
-        }
+
+
+
+        if(customer.getYearsActive() >= 2)
+            return BigDecimal.valueOf(0.05).setScale(2, RoundingMode.HALF_EVEN);
+
+
 
         return BigDecimal.valueOf(0.00).setScale(2, RoundingMode.HALF_EVEN);
     }
