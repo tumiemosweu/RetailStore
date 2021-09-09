@@ -13,7 +13,6 @@ import java.time.Period;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
 @Entity
 public class Customer {
 

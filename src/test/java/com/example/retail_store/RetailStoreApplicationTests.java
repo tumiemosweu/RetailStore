@@ -27,9 +27,6 @@ class RetailStoreApplicationTests {
 	@Autowired
 	ICustomerRepository customerRepository;
 
-	@Autowired
-	private MockMvc mvc;
-
 	@Test
 	void calculateDiscountForRegularCustomer() {
 		Customer customer = customerRepository.findCustomerByEmail("talias@gmail.com").get();
