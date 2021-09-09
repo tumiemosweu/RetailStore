@@ -30,6 +30,16 @@ mvn test
 Test Coverage
 Jacoco is used for test coverage. The report file is located in the target folder under target/site/jacoco/index.html .One can use the jacoco:report goal in order to generate readable code coverage reports in several formats – e.g. HTML, CSV, and XML.
 
+API Documentation:
+Swagger UI was used to document the API. The documentation can be accessed as follows
+```
+
+http://localhost:8080/swagger-ui-custom.html
+```
+Example request and response:
+![Request response example] (Swagger_UI.png?raw=true "API Documentation")
+
+
 UML Class Diagram
 ![Alt text](retail_store.png?raw=true "UML")
 
