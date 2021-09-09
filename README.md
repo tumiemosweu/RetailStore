@@ -33,11 +33,10 @@ Jacoco is used for test coverage. The report file is located in the target folde
 API Documentation:
 Swagger UI was used to document the API. The documentation can be accessed as follows
 ```
-
 http://localhost:8080/swagger-ui-custom.html
 ```
 Example request and response:
-![Request response example] (Swagger_UI.png?raw=true "API Documentation")
+![Alt text](Swagger_UI.png?raw=true "API Documentation")
 
 
 UML Class Diagram
