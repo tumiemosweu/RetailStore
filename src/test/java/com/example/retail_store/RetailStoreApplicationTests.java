@@ -30,15 +30,6 @@ class RetailStoreApplicationTests {
 	@Autowired
 	private MockMvc mvc;
 
-//	@Test
-//	public void getHello() throws Exception {
-//		mvc.perform(MockMvcRequestBuilders.post("/retail-store/v1/billing-discount/1/")
-//				.contentType(MediaType.APPLICATION_JSON)
-//				.content("{'totalBillAmount': 200.00}")
-//				.accept(MediaType.APPLICATION_JSON))
-//				.andExpect(status().isOk());
-//	}
-
 	@Test
 	void calculateDiscountForRegularCustomer() {
 		Customer customer = customerRepository.findCustomerByEmail("talias@gmail.com").get();
